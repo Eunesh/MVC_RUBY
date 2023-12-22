@@ -1,0 +1,64 @@
+<!-- Banner Image -->
+<div class="container-fluid d-flex align-items-start justify-content-center" 
+    style="
+        height: calc(100vh - 50px);
+        background: url('https://img.freepik.com/free-photo/creative-world-book-day-composition_23-2148883779.jpg?w=1380&t=st=1703235933~exp=1703236533~hmac=972b401d8c35af9e6894ab5938a59ac92d79921e62a0d1e865ca3ea4a175ef15');
+        background-repeat: no-repeat;
+        background-size: cover;"
+    >
+    <div class="px-5 py-3" style="background: #FFF; opacity: 0.9; margin-top: 200px;">
+        <p style="font-size: 100px;">Book List</p>
+    </div>
+</div>
+<!-- Banner Image -->
+
+<div class="mt-5 px-5 container-fluid">
+    <div>
+        <div class='d-flex justify-content-between align-items-center'>
+            <h2> Subjects: </h2>
+            <%= link_to 'Add Subject' , subjects_new_path, class: " btn btn-primary text-decoration-none" %>
+        </div>
+
+        <div class='d-flex gap-5 mb-5 flex-wrap mt-3'>
+            <% @subjects.each do |subject|%>
+                <div class="card" style="width: 10rem;">
+                    <img src="<%= subject.url%>" style="height:200px; object-fit:cover;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= link_to subject.name, "http://localhost:3000/books/show_subjects?id=#{subject.id}", class: "text-decoration-none"  %>
+                        </h5>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div>
+        <div class='d-flex justify-content-between align-items-center'>
+            <h2> Books: </h2>
+            <%= link_to 'Add Book' , books_new_path, class: " btn btn-primary text-decoration-none" %>
+        </div>
+
+        <div class='d-flex gap-5 mb-5 flex-wrap mt-3'>
+            <% @books.each do |book|%>
+
+                <div class="card" style="width: 15rem;">
+                    <img src="<%= book.url%>" style="height:350px; object-fit:cover;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= link_to book.title, {action: "show", id: book.id}, class: "text-decoration-none"%>
+                        </h5>
+                        <p class="card-text">
+                            <%= book.description%>
+                        </p>
+                        <div class="d-flex gap-2 justify-content-between mt-2 px-1">
+                            <%= link_to 'Edit' , {action: 'edit', id: book.id}, class: "btn btn-primary" %>
+                            <%= link_to 'Delete' , {action: 'delete', id: book.id}, class: "btn btn-danger text-decoration-none" %>
+                        </div>
+                    </div>
+                </div>
+
+            <% end %>
+        </div>
+    </div>
+</div>

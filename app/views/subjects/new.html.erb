@@ -1,0 +1,33 @@
+<div class="container-fluid p-5">
+  <h2 class="mb-3">Add new Subject</h2>
+
+
+  <div class="d-flex gap-5 align-items-center">
+
+  <div>
+    <div style="width:400px;">
+      <%= form_with(model: @subject, url: subjects_create_path) do |form| %>
+        <div class="mb-3">
+            <%= form.label :name, 'Name: ', class: "form-label" %>
+            <%= form.text_field :name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :url, 'Image URL: ', class: "form-label" %>
+            <%= form.text_field :url, class: "form-control" %>
+        </div>
+        <%= form.submit "Create", class: "btn btn-primary", style: "width: 100%;" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <img src="https://www.shareicon.net/data/2015/08/15/85592_upload_512x512.png" style="width:200px; height:auto; object-fit:cover;">
+  </div>
+
+  </div>
+  
+  <p class="mt-5">
+    Go Back: 
+    <%= link_to ' Click me', subjects_list_path %>
+  </p>
+</div>

@@ -1,0 +1,34 @@
+<!-- Banner Image -->
+<div class="container-fluid d-flex align-items-start justify-content-center" 
+    style="
+        height: calc(100vh - 50px);
+        background: url('https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        background-repeat: no-repeat;
+        background-size: cover;"
+    >
+    <div class="px-5 py-3" style="background: #FFF; opacity: 0.9; margin-top: 200px;">
+        <p style="font-size: 100px;">Subject List</p>
+    </div>
+</div>
+<!-- Banner Image -->
+
+<div class="mt-5 px-5 container-fluid">
+
+    <div class='d-flex justify-content-between align-items-center'>
+        <h2> Subjects: </h2>
+        <%= link_to 'Add Subject' , subjects_new_path, class: " btn btn-primary text-decoration-none" %>
+    </div>
+
+    <div class='d-flex gap-5 mb-5 flex-wrap mt-3'>
+        <% @subjects.each do |subject|%>
+            <div class="card" style="width: 20rem;">
+                <img src="<%= subject.url%>" style="height:350px; object-fit:cover;" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= link_to subject.name, "http://localhost:3000/books/show_subjects?id=#{subject.id}", class: "text-decoration-none"  %>
+                    </h5>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

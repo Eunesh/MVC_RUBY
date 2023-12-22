@@ -1,0 +1,50 @@
+<div class="container-fluid p-5">
+  <h1 class="mb-3">Edit Book Detail</h1>
+
+
+  <div class="d-flex gap-5 align-items-center">
+
+  <div>
+    <div style="width:400px;">
+      <%= form_with(model: @book, url: "http://localhost:3000/books/update?id=#{@book.id}", method: :patch) do |form| %>
+        <div class="mb-3">
+          <%= form.label :title, 'Title: ', class: "form-label"%>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :url, 'Image URL: ', class: "form-label"%>
+          <%= form.text_field :url, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :price, 'Price: ', class: "form-label" %>
+          <%= form.text_field :price, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :subject_id, 'Subject: ', class: "form-label" %>
+          <%= form.collection_select :subject_id, @subjects, :id, :name, prompt: true%>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :description, 'Description', class: "form-label"%>
+          <%= form.text_area :description, class: "form-control" %>
+        </div>
+
+        <%= form.submit "Save Changes", class: "btn btn-primary", style: "width: 100%;" %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div>
+    <img src="https://www.shareicon.net/data/2015/08/15/85592_upload_512x512.png" style="width:200px; height:auto; object-fit:cover;">
+  </div>
+
+</div>
+
+<p class="mt-5">
+  Go Back: 
+  <%= link_to ' Click me', books_list_path %>
+</p>
